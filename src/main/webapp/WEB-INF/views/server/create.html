@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+	<head>
+		<title>TODO supply a title</title>
+	</head>
+	<body>
+		<div>Create server. Routing is on.</div>
+
+
+
+
+
+
+		<form class="form-narrow form-horizontal" method="post" th:action="@{/server}" th:object="${signupForm}">
+			<!-- /* Show general error message when form contains errors */ -->
+			<fieldset>
+				<legend>Please Sign Up</legend>
+				<div class="form-group">
+					<div class="col-lg-offset-2 col-lg-10">
+						<button type="submit" class="btn btn-default">Sign up</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+
+
+
+
+
+	</body>
+</html>
