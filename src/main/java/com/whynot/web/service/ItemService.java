@@ -5,10 +5,38 @@
  */
 package com.whynot.web.service;
 
+import com.whynot.web.dao.ItemRepository;
+import com.whynot.web.domain.Item;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  *
  * @author potapov
  */
 public class ItemService {
 	
+	@Autowired
+	ItemRepository repo;
+	
+	public Item create(Item entity) {
+		Item result = repo.create(entity);	
+		return result;
+	}
+
+	public boolean delete(Item entity) {
+		return repo.delete(entity);
+	}
+
+	public Item update(Item entity) {
+		return repo.update(entity);
+	}
+	
+	public Item findById(Long id){
+		return repo.findByID(id);
+	}
+	
+	public List<Item> findAll(){
+		return repo.findAll();
+	}
 }

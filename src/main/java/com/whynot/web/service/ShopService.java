@@ -5,10 +5,37 @@
  */
 package com.whynot.web.service;
 
+import com.whynot.web.dao.ShopRepository;
+import com.whynot.web.domain.Shop;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  *
  * @author potapov
  */
 public class ShopService {
+		@Autowired
+	ShopRepository repo;
 	
+	public Shop create(Shop entity) {
+		Shop result = repo.create(entity);	
+		return result;
+	}
+
+	public boolean delete(Shop entity) {
+		return repo.delete(entity);
+	}
+
+	public Shop update(Shop entity) {
+		return repo.update(entity);
+	}
+	
+	public Shop findById(Long id){
+		return repo.findByID(id);
+	}
+	
+	public List<Shop> findAll(){
+		return repo.findAll();
+	}
 }

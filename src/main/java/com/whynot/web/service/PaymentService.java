@@ -5,10 +5,37 @@
  */
 package com.whynot.web.service;
 
+import com.whynot.web.dao.PaymentRepository;
+import com.whynot.web.domain.Payment;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  *
  * @author potapov
  */
 public class PaymentService {
+		@Autowired
+	PaymentRepository repo;
 	
+	public Payment create(Payment entity) {
+		Payment result = repo.create(entity);	
+		return result;
+	}
+
+	public boolean delete(Payment entity) {
+		return repo.delete(entity);
+	}
+
+	public Payment update(Payment entity) {
+		return repo.update(entity);
+	}
+	
+	public Payment findById(Long id){
+		return repo.findByID(id);
+	}
+	
+	public List<Payment> findAll(){
+		return repo.findAll();
+	}
 }
