@@ -3,10 +3,12 @@ package com.whynot.web.account;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
+import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Repository;
@@ -17,8 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Transactional(readOnly = true)
 public class AccountRepository {
 
-	@Inject
-	private PasswordEncoder passwordEncoder;
+	
 
 	@Autowired
 	SessionFactory sessionFactory;
@@ -29,7 +30,6 @@ public class AccountRepository {
 
 	@Transactional
 	public Account create(Account account) {
-		account.setPassword(passwordEncoder.encode(account.getPassword()));
 		Session session = sessionFactory.openSession();
 
 		Long id = (Long) session.save(account);
@@ -76,12 +76,9 @@ public class AccountRepository {
 
 	public Account findByEmail(String email) {
 		Session session = sessionFactory.openSession();
-		org.hibernate.Query query = session.createQuery("from Account where email = :email ");
-		query.setParameter("email", email);
-
-		List<?> list = query.list();
-
-		Account account = (Account) list.get(0);
+		Criteria cr = session.createCriteria(Account.class);
+		cr.add(Restrictions.eq("email", email));	
+		Account account = (Account) cr.uniqueResult();
 		try {
 			Hibernate.initialize(account);
 		} catch (ObjectNotFoundException e) {

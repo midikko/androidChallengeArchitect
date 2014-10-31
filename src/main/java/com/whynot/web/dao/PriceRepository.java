@@ -16,22 +16,19 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author potapov
  */
-@Repository
-@Transactional(readOnly = true)
-public class ItemRepository {
-	
+public class PriceRepository {
+			
 	@Autowired
 	SessionFactory sessionFactory;
 
 	@Transactional
-	public Item create(Item entity) {
+	public PriceList create(PriceList entity) {
 		Session session = sessionFactory.openSession();
 
 		Long id = (Long) session.save(entity);
@@ -45,15 +42,15 @@ public class ItemRepository {
 		return entity;
 	}
 
-	public Item findByID(long id) {
+	public PriceList findByID(long id) {
 		Session session = sessionFactory.openSession();
-		Criteria cr = session.createCriteria(Item.class);
+		Criteria cr = session.createCriteria(PriceList.class);
 		cr.add(Restrictions.eq("id", id));
-		Item entity = (Item) cr.uniqueResult();
+		PriceList entity = (PriceList) cr.uniqueResult();
 		try {
 			Hibernate.initialize(entity);
 		} catch (ObjectNotFoundException e) {
-			System.out.println("Item object with id " + id + " not found");
+			System.out.println("PriceList object with id " + id + " not found");
 			entity = null;
 		} finally {
 			if (session != null) {
@@ -65,11 +62,11 @@ public class ItemRepository {
 		return entity;
 	}
 
-	public List<Item> findAll() {
+	public List<PriceList> findAll() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		Criteria cr = session.createCriteria(Item.class);
-		List<Item> entitys = cr.list();
+		Criteria cr = session.createCriteria(PriceList.class);
+		List<PriceList> entitys = cr.list();
 		session.getTransaction().commit();
 		if (session != null) {
 			session.flush();
@@ -79,7 +76,7 @@ public class ItemRepository {
 		return entitys;
 	}
 
-	public boolean delete(Item entity) {
+	public boolean delete(PriceList entity) {
 		Session session = sessionFactory.openSession();
 
 		session.delete(entity);
@@ -91,8 +88,31 @@ public class ItemRepository {
 
 		return findByID(entity.getId()) == null;
 	}
+	
+	public List<PriceList> findPricesByItem(Item item,Shop shop) {
+		Session session = sessionFactory.openSession();
+		
+		Criteria cr = session.createCriteria(PriceList.class);
+		cr.add(Restrictions.eq("item", item));
+		cr.add(Restrictions.eq("shop", shop));
+		
+		List<PriceList> entity = cr.list();
+		try {
+			Hibernate.initialize(entity);
+		} catch (ObjectNotFoundException e) {
+			System.out.println("Shop object with item " + item + " not found");
+			entity = null;
+		} finally {
+			if (session != null) {
+				session.flush();
+				session.close();
+			}
+		}
 
-	public Item update(Item entity) {
+		return entity;
+	}
+
+	public PriceList update(PriceList entity) {
 		Session session = sessionFactory.openSession();
 
 		session.update(entity);
@@ -104,6 +124,4 @@ public class ItemRepository {
 
 		return findByID(entity.getId());
 	}
-
-	
 }

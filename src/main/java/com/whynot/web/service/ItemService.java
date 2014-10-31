@@ -9,11 +9,13 @@ import com.whynot.web.dao.ItemRepository;
 import com.whynot.web.domain.Item;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author potapov
  */
+@Service
 public class ItemService {
 	
 	@Autowired
@@ -39,4 +41,6 @@ public class ItemService {
 	public List<Item> findAll(){
 		return repo.findAll();
 	}
+
+
 }

@@ -102,4 +102,28 @@ public class ShopRepository {
 
 		return findByID(entity.getId());
 	}
+
+	public Shop findByShop(Shop shop) {
+		Session session = sessionFactory.openSession();
+		
+		Criteria cr = session.createCriteria(Shop.class);
+		cr.add(Restrictions.eq("name", shop.getName()));
+		cr.add(Restrictions.eq("address", shop.getAddress()));
+		cr.add(Restrictions.eq("city", shop.getCity()));
+		
+		Shop entity = (Shop) cr.uniqueResult();
+		try {
+			Hibernate.initialize(entity);
+		} catch (ObjectNotFoundException e) {
+			System.out.println("Shop object with shop " + shop + " not found");
+			entity = null;
+		} finally {
+			if (session != null) {
+				session.flush();
+				session.close();
+			}
+		}
+
+		return entity;
+	}
 }

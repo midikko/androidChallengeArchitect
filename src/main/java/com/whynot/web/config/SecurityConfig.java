@@ -52,7 +52,7 @@ class SecurityConfig {
      */
     return new RequestMatcher() {
       private Pattern allowedMethods = Pattern
-        .compile("^(GET|HEAD|TRACE|OPTIONS)$");
+        .compile("^(GET|POST|HEAD|TRACE|OPTIONS)$");
 
       /*
        * (non-Javadoc)

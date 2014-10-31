@@ -6,12 +6,14 @@
 package com.whynot.web.domain;
 
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -29,8 +31,8 @@ public class Item {
 	@Column(name = "name")
 	private String name;
 	
-	@ManyToMany(targetEntity = Shop.class)
-	private Set shops;
+	@OneToMany(targetEntity = PriceList.class, mappedBy = "item", cascade = CascadeType.ALL)
+    private Set prices;
 
 	public Long getId() {
 		return id;

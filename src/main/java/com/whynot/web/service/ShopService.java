@@ -9,11 +9,13 @@ import com.whynot.web.dao.ShopRepository;
 import com.whynot.web.domain.Shop;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author potapov
  */
+@Service
 public class ShopService {
 		@Autowired
 	ShopRepository repo;
@@ -37,5 +39,9 @@ public class ShopService {
 	
 	public List<Shop> findAll(){
 		return repo.findAll();
+	}
+
+	public Shop findByShop(Shop shop) {
+		return repo.findByShop(shop);
 	}
 }

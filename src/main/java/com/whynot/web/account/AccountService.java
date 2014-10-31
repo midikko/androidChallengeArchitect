@@ -6,12 +6,16 @@
 package com.whynot.web.account;
 
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author nevezhinpavel
  */
+@Service
 public class AccountService {
 
 	@Autowired
@@ -33,6 +37,14 @@ public class AccountService {
 		return accountRepository.delete(account);
 	}
 
+	public Account findByEmail(String login){
+		return accountRepository.findByEmail(login);
+	}
+	
+	public List<Account> findAll(){
+		return accountRepository.findAll();
+	}
+	
 	public Account updateAccount(Account account) {
 
 		return accountRepository.update(account);

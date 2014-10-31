@@ -9,11 +9,13 @@ import com.whynot.web.dao.PaymentRepository;
 import com.whynot.web.domain.Payment;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author potapov
  */
+@Service
 public class PaymentService {
 		@Autowired
 	PaymentRepository repo;

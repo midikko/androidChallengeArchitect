@@ -6,12 +6,14 @@
 package com.whynot.web.domain;
 
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -29,14 +31,14 @@ public class Shop {
 	@Column(name = "name")
 	private String name;
 	
-	@Column(name = "town")
-	private String town;
+	@Column(name = "city")
+	private String city;
 	
 	@Column(name = "adress")
-	private String adress;
+	private String address;
 
-	@ManyToMany(mappedBy="shops", targetEntity = Item.class)
-	private Set items;
+	@OneToMany(targetEntity = PriceList.class, mappedBy = "shop", cascade = CascadeType.ALL)
+    private Set prices;
 	
 	public Shop() {
 	}
@@ -57,20 +59,32 @@ public class Shop {
 		this.name = name;
 	}
 
-	public String getTown() {
-		return town;
+	public String getCity() {
+		return city;
 	}
 
-	public void setTown(String town) {
-		this.town = town;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Set getItems() {
+		return prices;
+	}
+
+	public void setItems(Set items) {
+		this.prices = items;
+	}
+	
+	public void addItem(Item item){
+		prices.add(item);
 	}
 	
 	
