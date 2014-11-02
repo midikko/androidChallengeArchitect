@@ -68,6 +68,16 @@ public class PriceList {
 	public void setShop(Shop shop) {
 		this.shop = shop;
 	}
+
+    public PriceList(long price, Item item, Shop shop) {
+        this.price = price;
+        this.item = item;
+        this.shop = shop;
+    }
+
+    public PriceList() {
+    }
 	
+        
 	
 }

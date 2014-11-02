@@ -64,6 +64,26 @@ public class ItemRepository {
 
 		return entity;
 	}
+        
+        public Item findByName(String name) {
+		Session session = sessionFactory.openSession();
+		Criteria cr = session.createCriteria(Item.class);
+		cr.add(Restrictions.eq("name", name));
+		Item entity = (Item) cr.uniqueResult();
+		try {
+			Hibernate.initialize(entity);
+		} catch (ObjectNotFoundException e) {
+			System.out.println("Item object with id " + name + " not found");
+			entity = null;
+		} finally {
+			if (session != null) {
+				session.flush();
+				session.close();
+			}
+		}
+
+		return entity;
+	}
 
 	public List<Item> findAll() {
 		Session session = sessionFactory.openSession();

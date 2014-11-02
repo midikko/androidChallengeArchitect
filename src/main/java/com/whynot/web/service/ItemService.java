@@ -41,6 +41,9 @@ public class ItemService {
 	public List<Item> findAll(){
 		return repo.findAll();
 	}
-
+        
+        public Item findByName(String name){
+		return repo.findByName(name);
+	}
 
 }

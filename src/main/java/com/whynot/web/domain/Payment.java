@@ -43,7 +43,7 @@ public class Payment {
 	private long value;
 	
 	@ManyToOne(targetEntity = Account.class, optional = false)
-    @JoinColumn(name = "account_id")
+        @JoinColumn(name = "account_id")
 	private Account account;
 
 	public Payment() {
@@ -72,6 +72,20 @@ public class Payment {
 	public void setValue(long value) {
 		this.value = value;
 	}
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public Payment(Type type, long value, Account account) {
+        this.type = type;
+        this.value = value;
+        this.account = account;
+    }
 	
 	
 	

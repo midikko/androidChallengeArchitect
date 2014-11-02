@@ -17,6 +17,7 @@ public class DataPart implements Serializable{
 	private String token;
 	private Item item;
 	private Shop shop;
+        private int price;
 
 	public DataPart() {
 	}
@@ -44,6 +45,14 @@ public class DataPart implements Serializable{
 	public void setShop(Shop shop) {
 		this.shop = shop;
 	}
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 	
 	
 }

@@ -111,6 +111,30 @@ public class PriceRepository {
 
 		return entity;
 	}
+        
+        public PriceList findItemPrice(Item item,Shop shop, int price) {
+		Session session = sessionFactory.openSession();
+		
+		Criteria cr = session.createCriteria(PriceList.class);
+		cr.add(Restrictions.eq("item", item));
+		cr.add(Restrictions.eq("shop", shop));
+                cr.add(Restrictions.eq("price", price));
+		
+		PriceList entity = (PriceList) cr.uniqueResult();
+		try {
+			Hibernate.initialize(entity);
+		} catch (ObjectNotFoundException e) {
+			System.out.println("Shop object with item " + item + " not found");
+			entity = null;
+		} finally {
+			if (session != null) {
+				session.flush();
+				session.close();
+			}
+		}
+
+		return entity;
+	}
 
 	public PriceList update(PriceList entity) {
 		Session session = sessionFactory.openSession();
