@@ -10,7 +10,7 @@ import com.whynot.web.domain.Shop;
 import java.io.Serializable;
 
 /**
- *
+ *  <p> Сущность для обмена данными между нами и мобильным устройством</p>
  * @author potapov
  */
 public class DataPart implements Serializable{

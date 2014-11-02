@@ -15,6 +15,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * Сущность пользователя приложения.
+ * @author Midikko
+ */
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "account")

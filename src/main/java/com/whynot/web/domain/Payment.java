@@ -18,7 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- *
+ * Сущность для описания операций с балансом пользователя
  * @author potapov
  */
 @Entity

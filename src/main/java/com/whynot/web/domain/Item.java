@@ -17,7 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- *
+ * Сущность товара
  * @author potapov
  */
 @Entity

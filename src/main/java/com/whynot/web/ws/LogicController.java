@@ -44,9 +44,14 @@ public class LogicController {
 
     int point;
 
+    /**
+     * <p> Получаем на вход рест-токен доступа, магазин, товар и цену</p>
+     * <p> Возвращаем статус операции и количесвто полученных тугриков</p>
+     * @param data
+     * @return
+     */
     @RequestMapping(value = "rest/add_item", method = RequestMethod.POST)
-    public @ResponseBody
-    String login(DataPart data) {
+    public @ResponseBody String letsDoSomeLogic(DataPart data) {
         if (!LoginController.usermap.containsKey(data.getToken())) {
             return "Access denied";
         }
@@ -54,7 +59,7 @@ public class LogicController {
         Shop shop = shopService.findByShop(data.getShop());
 
         if (shop == null) {
-            shop = shopService.create(data.getShop());
+            shop = shopService.create(data.getShop()); 
             point += 2;
         }
 
@@ -64,9 +69,9 @@ public class LogicController {
             point += 2;
         }
 
-        List<PriceList> items = priceRepo.findPricesByItem(item, shop);
+        List<PriceList> items = priceRepo.findPricesByItem(item, shop); // получаем данные о ценах для конкретной позиции в конкретном магазине
         PriceList itemPrice = null;
-        if (items == null) {
+        if (items == null) {               // если данных нет - можем сразу смело добавлять запись в базу и прибавлять себе парочку тугриков
             PriceList priceitem = new PriceList(data.getPrice(), item, shop);
             point++;
             priceRepo.create(priceitem);
@@ -74,7 +79,7 @@ public class LogicController {
             Payment pay = new Payment(Payment.Type.DEBIT, point, acc);
             paymentService.create(pay);
             return "Success added! " + point + " points gained";
-        } else {
+        } else {                //  впротивном случае ищем данные по позиции и магазину, для конкретной цены. если таковой нет. добавляем запись в базу
             itemPrice = priceRepo.findItemPrice(data.getItem(), data.getShop(), data.getPrice());
             if (itemPrice == null) {
                 point += 2;

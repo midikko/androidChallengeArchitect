@@ -16,18 +16,20 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- *
+ * <p> DAO класс общения с базой, для списков цен.</p>
  * @author potapov
  */
+@Repository
 public class PriceRepository {
 			
 	@Autowired
 	SessionFactory sessionFactory;
 
-	@Transactional
+    @Transactional
 	public PriceList create(PriceList entity) {
 		Session session = sessionFactory.openSession();
 
@@ -89,6 +91,7 @@ public class PriceRepository {
 		return findByID(entity.getId()) == null;
 	}
 	
+        
 	public List<PriceList> findPricesByItem(Item item,Shop shop) {
 		Session session = sessionFactory.openSession();
 		

@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- *
+ * Сущность, созданная для возможности выборки конкретного товара среди нескольких магазинов.
  * @author potapov
  */
 @Entity

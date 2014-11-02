@@ -16,6 +16,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 
+/**
+ * Класс настроек общения с базой. в нашем случае это postgresql
+ * @author Midikko
+ */
 @Configuration
 @EnableTransactionManagement
 @PropertySource({"classpath:persistence.properties"})
@@ -31,13 +35,6 @@ public class JpaConfig implements DataSourceConfig {
 	@Value("${dataSource.password}")
 	private String password;
 	@Value("${hibernate.dialect}")
-	private String dialect;
-	@Value("${hibernate.hbm2ddl.auto}")
-	private String hbm2ddlAuto;
-	@Value("${hibernate.show_sql}")
-	private String show_sql;
-	@Value("${hibernate.enable_lazy_load_no_trans}")
-	private String enable_lazy_load_no_trans;
 
 	@Autowired
 	@Bean(name = "sessionFactory")

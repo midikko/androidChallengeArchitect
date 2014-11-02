@@ -18,7 +18,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- *
+ * <p> DAO класс общения с базой, для магазинов.</p>
  * @author potapov
  */
 @Repository

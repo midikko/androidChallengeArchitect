@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- *
+ * <p> DAO класс общения с базой, для платежных операций.</p>
  * @author potapov
  */
 @Repository
