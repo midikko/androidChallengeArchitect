@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Личный кабинет</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+	</head>
+	<body>
+		<div th:replace="fragments/header :: header">Header</div>
+		<div class="row">
+			<div class="container">
+				<div class="col-lg-4">
+					<div style="clear: both;">
+						<img th:src="${account.avatar}" />
+					</div>
+					<div style="clear: both;">
+						<label th:text="${account.email}"></label><br/>
+					</div>
+				</div>
+				<div class="col-lg-8">
+					<form th:action="@{/account/info}" method="POST">
+						<div class="form-group">
+							<label>Имя</label>
+							<input th:value="${account.name}" class="form-control" id="name" th:field="*{accountInfo.name}"/>
+						</div>
+						<div class="form-group">
+							<label>Пароль</label>
+							<input th:value="${account.password}" type="password" class="form-control" id="password" th:field="*{accountInfo.password}"/>
+						</div>
+						<button class="btn btn-default" type="submit">Сохранить</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div th:replace="fragments/footer :: footer">&copy; 2013 The Static Templates</div>
+	</body>
+</html>
