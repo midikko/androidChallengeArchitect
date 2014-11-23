@@ -3,7 +3,7 @@ package com.whynot.checkOtrade.web.signup;
 import com.whynot.checkOtrade.web.support.web.MessageHelper;
 import com.whynot.checkOtrade.web.account.AccountRepository;
 import com.whynot.checkOtrade.web.account.UserService;
-import com.whynot.checkOtrade.web.account.Account;
+import com.whynot.checkOtrade.web.domain.Account;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;

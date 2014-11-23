@@ -1,7 +1,6 @@
-package com.whynot.checkOtrade.web.account;
+package com.whynot.checkOtrade.web.domain;
 
 
-import com.whynot.checkOtrade.web.domain.Payment;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -45,7 +42,7 @@ public class Account implements java.io.Serializable {
         private Set payments;
 	
 
-    protected Account() {
+    public Account() {
 	}
 	
 	public Account(String email, String password, String role) {

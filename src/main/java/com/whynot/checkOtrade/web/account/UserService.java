@@ -1,5 +1,6 @@
 package com.whynot.checkOtrade.web.account;
 
+import com.whynot.checkOtrade.web.domain.Account;
 import java.util.Collections;
 
 import javax.annotation.PostConstruct;

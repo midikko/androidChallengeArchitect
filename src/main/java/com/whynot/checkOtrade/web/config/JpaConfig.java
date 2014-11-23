@@ -23,7 +23,7 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 @Configuration
 @EnableTransactionManagement
 @PropertySource({"classpath:persistence.properties"})
-@ComponentScan({"com.whynot.web"})
+@ComponentScan({"com.whynot.checkOtrade.web"})
 public class JpaConfig implements DataSourceConfig {
 
 	@Value("${dataSource.driverClassName}")
@@ -34,7 +34,6 @@ public class JpaConfig implements DataSourceConfig {
 	private String username;
 	@Value("${dataSource.password}")
 	private String password;
-	@Value("${hibernate.dialect}")
 
 	@Autowired
 	@Bean(name = "sessionFactory")
@@ -43,12 +42,12 @@ public class JpaConfig implements DataSourceConfig {
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 		
 		sessionBuilder.setProperty("hibernate.hbm2ddl.auto", "create");
-		sessionBuilder.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+		sessionBuilder.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 		sessionBuilder.setProperty("hibernate.globally_quoted_identifiers", "false");
 		sessionBuilder.setProperty("hibernate.show_sql", "true");
 		sessionBuilder.setProperty("hibernate.enable_lazy_load_no_trans", "true");
 		
-		sessionBuilder.scanPackages("com.whynot.web");
+		sessionBuilder.scanPackages("com.whynot.checkOtrade.web");
 		return sessionBuilder.buildSessionFactory();
 	}
 

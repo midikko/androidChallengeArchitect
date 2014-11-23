@@ -1,5 +1,6 @@
 package com.whynot.checkOtrade.web.account;
 
+import com.whynot.checkOtrade.web.domain.Account;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,7 +2,7 @@ package com.whynot.checkOtrade.web.signup;
 
 import org.hibernate.validator.constraints.*;
 
-import com.whynot.checkOtrade.web.account.Account;
+import com.whynot.checkOtrade.web.domain.Account;
 
 public class SignupForm {
 

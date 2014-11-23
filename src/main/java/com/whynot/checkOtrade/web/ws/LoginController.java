@@ -5,7 +5,7 @@
  */
 package com.whynot.checkOtrade.web.ws;
 
-import com.whynot.checkOtrade.web.account.Account;
+import com.whynot.checkOtrade.web.domain.Account;
 import com.whynot.checkOtrade.web.account.AccountService;
 import java.math.BigInteger;
 import java.security.SecureRandom;

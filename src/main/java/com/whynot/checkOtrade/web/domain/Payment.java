@@ -5,7 +5,6 @@
  */
 package com.whynot.checkOtrade.web.domain;
 
-import com.whynot.checkOtrade.web.account.Account;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
