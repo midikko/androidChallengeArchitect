@@ -1,8 +1,8 @@
-package com.whynot.checkOtrade.web.signup;
+package com.whynot.checkOtrade.web.controller.signup;
 
 import com.whynot.checkOtrade.web.support.web.MessageHelper;
-import com.whynot.checkOtrade.web.account.AccountRepository;
-import com.whynot.checkOtrade.web.account.UserService;
+import com.whynot.checkOtrade.web.dao.AccountRepository;
+import com.whynot.checkOtrade.web.service.UserService;
 import com.whynot.checkOtrade.web.domain.Account;
 import javax.validation.Valid;
 

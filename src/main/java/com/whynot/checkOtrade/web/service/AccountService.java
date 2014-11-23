@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.whynot.checkOtrade.web.account;
+package com.whynot.checkOtrade.web.service;
 
 
+import com.whynot.checkOtrade.web.dao.AccountRepository;
 import com.whynot.checkOtrade.web.domain.Account;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

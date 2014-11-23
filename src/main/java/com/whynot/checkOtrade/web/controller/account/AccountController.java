@@ -1,5 +1,6 @@
-package com.whynot.checkOtrade.web.account;
+package com.whynot.checkOtrade.web.controller.account;
 
+import com.whynot.checkOtrade.web.dao.AccountRepository;
 import com.whynot.checkOtrade.web.domain.Account;
 import java.security.Principal;
 

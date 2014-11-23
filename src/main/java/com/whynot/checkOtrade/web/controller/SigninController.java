@@ -1,4 +1,4 @@
-package com.whynot.checkOtrade.web.signin;
+package com.whynot.checkOtrade.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

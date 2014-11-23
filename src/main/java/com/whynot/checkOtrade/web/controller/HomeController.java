@@ -1,4 +1,4 @@
-package com.whynot.checkOtrade.web.home;
+package com.whynot.checkOtrade.web.controller;
 
 import java.security.Principal;
 

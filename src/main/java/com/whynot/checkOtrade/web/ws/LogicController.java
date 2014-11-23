@@ -6,7 +6,7 @@
 package com.whynot.checkOtrade.web.ws;
 
 import com.whynot.checkOtrade.web.domain.Account;
-import com.whynot.checkOtrade.web.account.UserService;
+import com.whynot.checkOtrade.web.service.UserService;
 import com.whynot.checkOtrade.web.dao.PriceRepository;
 import com.whynot.checkOtrade.web.domain.Item;
 import com.whynot.checkOtrade.web.domain.Payment;

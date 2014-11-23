@@ -1,4 +1,4 @@
-package com.whynot.checkOtrade.web.signup;
+package com.whynot.checkOtrade.web.controller.signup;
 
 import org.hibernate.validator.constraints.*;
 
