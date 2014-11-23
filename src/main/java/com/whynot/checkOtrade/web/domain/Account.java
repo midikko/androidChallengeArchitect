@@ -1,6 +1,5 @@
 package com.whynot.checkOtrade.web.domain;
 
-
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,15 +13,13 @@ import javax.persistence.Table;
 
 /**
  * Сущность пользователя приложения.
+ *
  * @author Midikko
  */
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "account")
-@NamedQuery(name = Account.FIND_BY_EMAIL, query = "select a from Account a where a.email = :email")
 public class Account implements java.io.Serializable {
-
-	public static final String FIND_BY_EMAIL = "Account.findByEmail";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,21 +27,26 @@ public class Account implements java.io.Serializable {
 	private Long id;
 
 	@Column(name = "email", nullable = false, unique = true)
-	private String email;
-	
+	private String email = "";
+
+	@Column(name = "name")
+	private String name = "";
+
+	@Column(name = "avatar")
+	private String avatar = "";
+
 	@Column(name = "password", nullable = false)
-	private String password;
+	private String password = "";
 
 	@Column(name = "role", nullable = false)
 	private String role = "ROLE_USER";
-	
-	@OneToMany(targetEntity = Payment.class, mappedBy = "account", cascade = CascadeType.ALL)
-        private Set payments;
-	
 
-    public Account() {
+	@OneToMany(targetEntity = Payment.class, mappedBy = "account", cascade = CascadeType.ALL)
+	private Set payments;
+
+	public Account() {
 	}
-	
+
 	public Account(String email, String password, String role) {
 		this.email = email;
 		this.password = password;
@@ -55,7 +57,7 @@ public class Account implements java.io.Serializable {
 		return id;
 	}
 
-    public String getEmail() {
+	public String getEmail() {
 		return email;
 	}
 
@@ -86,6 +88,21 @@ public class Account implements java.io.Serializable {
 	public void setPayments(Set payments) {
 		this.payments = payments;
 	}
-	
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
 }
